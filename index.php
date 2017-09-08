@@ -11,7 +11,7 @@
         <input type="submit">
         </form>
         <?php
-            if isset($_POST['name']){
+            if (!empty($_POST['name'])){
             echo $_POST['name'];
             }
         ?>
