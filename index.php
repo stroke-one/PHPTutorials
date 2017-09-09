@@ -12,10 +12,10 @@
         </form>
         <?php
             if (!empty($_POST['name'])){
-                echo $_POST['name'];
+                echo("<p>Added new name: " . $_POST['name'] . "</p>");
+                echo("</center>");
                 $con = new PDO('mysql:host=localhost;dbname=phptest', 'ben', '...');                   
                 $sql_insert = "insert into names (name) VALUES ('" . $_POST['name'] . "')";
-                echo($sql_insert);
                 $cur = $con->prepare($sql_insert);
                 $cur->execute();
                             
@@ -23,11 +23,12 @@
                 $cur = $con->prepare($sql);
                 $cur->execute();
                 $result = $cur->fetchAll();
+                echo("<hr><b>Names in the database");
                 foreach($result as $row){
-                    echo("<p>" . $row['name'] "</p>");
+                    echo("<p>" . $row['name'] . "</p>");
                 }
 
                 }
-        ?>
-    </center>        
+        ?>      
     </body>
+    </html>
