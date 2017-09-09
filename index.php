@@ -14,8 +14,8 @@
             if (!empty($_POST['name'])){
                 echo $_POST['name'];
                 $con = new PDO('mysql:host=localhost;dbname=phptest', 'ben', '...');                   
-                $sql_insert = 'insert into names (name) VALUES (' . $_POST['name'] . ')';
-                print_r($sql_insert);
+                $sql_insert = "insert into names (name) VALUES ('" . $_POST['name'] . "')";
+                echo($sql_insert);
                 $cur = $con->prepare($sql_insert);
                 $cur->execute();
                             
