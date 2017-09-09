@@ -15,6 +15,7 @@
                 echo $_POST['name'];
                 $con = new PDO('mysql:host=localhost;dbname=phptest', 'ben', '...');                   
                 $sql_insert = 'insert into names (name) VALUES (' . $_POST['name'] . ')';
+                print_r($sql_insert);
                 $cur = $con->prepare($sql_insert);
                 $cur->execute();
                             
@@ -22,7 +23,9 @@
                 $cur = $con->prepare($sql);
                 $cur->execute();
                 $result = $cur->fetchAll();
-                print_r($result);
+                foreach($result as $row){
+                    echo("<p>" . $row['name'] "</p>");
+                }
 
                 }
         ?>
